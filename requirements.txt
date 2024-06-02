@@ -1,0 +1,8 @@
+streamlit
+python-dotenv
+langchain  
+langchain_community
+langchain_core
+openai
+pypdf
+pdfplumber
