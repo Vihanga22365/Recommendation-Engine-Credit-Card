@@ -75,7 +75,7 @@ st.markdown(
         display: none
     }
     
-    #neuro-linguistic-recommendation-engine-healthcare-plans-chatbot {
+    #neuro-linguistic-recommendation-engine-credit-card-plans-chatbot {
         font-size: 22px;
         text-align: center;
     }
