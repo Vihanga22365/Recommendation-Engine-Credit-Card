@@ -7,3 +7,5 @@ openai
 pypdf
 pdfplumber
 tenacity>=8.1.0,!=8.4.0
+langchain-groq 
+langchain-google-genai

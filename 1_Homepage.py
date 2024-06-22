@@ -5,6 +5,8 @@ from langchain.llms import OpenAI
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from langchain.chat_models import ChatOpenAI
+from langchain_groq import ChatGroq
+from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 import pdfplumber
 
@@ -55,8 +57,17 @@ Current conversation:
 Human: {input}
 AI Assistant:"""
 
-def generate_the_response(prompt, memory, pdf_context):
+def generate_the_response(prompt, selected_model, memory, pdf_context):
     # PROMPT = PromptTemplate(input_variables=["history", "input", "pdf_context"], template=template)
+    if selected_model == "Open AI GPT - 4o":
+        llm = ChatOpenAI(model_name = "gpt-4o",temperature=0.2)
+    elif selected_model == "Open AI GPT - 4 Turbo":
+        llm = ChatOpenAI(temperature=0.2, model_name="gpt-4-turbo-preview")
+    elif selected_model == "Meta Llama 3 70B":
+        llm = ChatGroq(temperature=0.2, model_name="llama3-70b-8192") 
+    elif selected_model == "Google Gemini 1.5 Pro":
+        llm = ChatGoogleGenerativeAI(temperature=0.2, model="gemini-1.5-pro-latest")
+        
     PROMPT =  PromptTemplate.from_template(template).partial(pdf_context=pdf_context)
     llm_chain = ConversationChain(
         prompt=PROMPT,
@@ -89,23 +100,29 @@ st.markdown(
 
 main_context = """Following is a line of credit card products and their features.
 
-Product 1: Citi AAAdvantage Card
-Product 1 Features: Credit card is offered in collaboration with American Airlines. Best suited for frequent travelers and explorers. Key benefit of the card is the miles accumulated with every purchase of the card. Many travel related benefits such as air ticket discounts, airport lounges, hotels and car rentals are offered through the AAAdvantage card. There is an annual fee of $20. No cashback rewards are present for the card. No initial reward present as well. New users can earn 15,000 American Airlines AAdvantage® bonus miles after making $500 in purchases within the first 3 months of account opening. Save 25% on inflight food and beverage purchases when you use your card on American Airlines flights. 
-Product 1 Sales Features: Sales person can offer one year waive off for annual fee.
+Product 1: CITI AADVANTAGE PLATINUM SELECT WORLD ELITE MASTERCARD
+Product 1 Features: Credit card offers 50,000 American Airlines AAdvantage bonus miles after $2,500 in purchases within the first 3 months of account opening. Earn 2 AAdvantage miles for every $1 spent at restaurants, gas stations, and eligible American Airlines purchases. Earn 1 AAdvantage mile for every $1 spent on all other purchases. Earn 1 Loyalty Point for every 1 eligible mile earned from purchases. First checked bag free on American Airlines domestic itineraries. Preferred boarding on American Airlines flights. 25% savings when you use your card on American Airlines inflight food and beverage purchases. 
+Product 1 Fees: $0 Intro Annual Fee, $99 after the first year. No foreign transaction fees.
 
-Product 2: Citi Custom Cash Card
-Product 2 features: Earn 5% cash back on purchases in your top eligible spend category each billing cycle, up to the first $500 spent.1% cash back thereafter. Also, earn unlimited 1% cash back on all other purchases. card is designed for frequent grocery shoppers. Discounts are present in many supermarkets. No Annual fee. No intro APR is present. New users can earn $200 cash back after you spend $1,500 on purchases in the first 6 months of account opening. 
+Product 2: CITI CUSTOM CASH CARD
+Product 2 Features: Earn 5% cash back on your top eligible spend category each billing cycle up to $500 spent. Earn 1% cash back thereafter on all other purchases. Special Travel Offer: Earn an additional 4% cash back on hotels, car rentals, and attractions booked on Citi Travel portal through 6/30/2025. 0% Intro APR for 15 months on purchases and balance transfers; after that, the variable APR will be 19.24% - 29.24%, based on your creditworthiness. Balance transfer fee of either $5 or 5% of the amount of each credit card balance transfer, whichever is greater. Balance Transfers must be completed within 4 months of account opening. 
+Product 2 Fees: No annual fee. $0 liability on unauthorized charges.
 
-Product 3: Citi Diamond Preferred Card
-Product 3 features: 0% intro APR of 21 months on balance transfers. Also a low intro APR for 12 months on user specified purchases. There is no annual fee. card designed to improve the credit score of users.Specialy there is no late fees.There is a balance transfer fee of either $5 or 5% of the amount of each transfer, whichever is greater
+Product 3: CITI DIAMOND PREFERRED CREDIT CARD
+Product 3 Features: 0% Intro APR for 21 months on balance transfers from date of first transfer; after that, the variable APR will be 18.24% - 28.99% based on your creditworthiness. Balance transfer fee of either $5 or 5% of the amount of each transfer, whichever is greater. 0% Intro APR for 12 months on purchases from date of account opening; after that, the variable APR will be 18.24% - 28.99% based on your creditworthiness. 
+Product 3 Fees: No annual fee. $0 liability on unauthorized charges.
 
-Product 4: Citi Double Cash Card
-Product 4 features: Earn $200 cash back after spend $1,500 on purchases in the first 6 months of account opening. This bonus offer will be fulfilled as 20,000 ThankYou Points, which can be redeemed for $200 cash back.Earn 2% on every purchase with unlimited 1% cash back when you buy, plus an additional 1% as you pay for those purchases. To earn cash back, pay at least the minimum due on time. Plus, for a limited time, earn 5% total cash back on hotel, car rentals and attractions booked on the Citi Travel portal through 12/31/24.0% intro APR on Balance Transfers for 18 months. After that, the variable APR will be 19.24% - 29.24%, based on your creditworthiness. Balance Transfers do not earn cash back. Intro APR does not apply to purchases.There is an intro balance transfer fee of 3% of each transfer (minimum $5) completed within the first 4 months of account opening. After that, your fee will be 5% of each transfer (minimum $5). No Annual fee
-Product 4 Sales Features: Sales person can offer late fee waive for first 3 months
+Product 4: CITI DOUBLE CASH CARD
+Product 4 Features: 0% Intro APR for 18 months on balance transfers; after that, the variable APR will be 19.24% - 29.24% based on your creditworthiness. Unlimited 1% cash back when you buy, plus an additional 1% as you pay, on every purchase. Earn $200 cash back after you spend $1,500 on purchases in the first 6 months of account opening. For a limited time, earn 5% total cash back on hotel, car rental and attractions when booked on the Citi TravelSM portal through 12/31/24. This is 3% cash back on top of the 1% when you buy and the 1% as you pay.
+Product 4 Fees: No annual fee. $0 liability on unauthorized charges. 
 
-Product 5: Costco Anywhere Visa Card by Citi
-Product 5 features: This is designed exclusively for Costco members.4% cash back on eligible gas and EV charging purchases for the first $7,000 per year and then 1% thereafter.3% cash back on restaurants and eligible travel purchases.2% cash back on all other purchases from Costco and Costco.com. 1% cash back on all other purchases.No annual fee with your paid Costco membership and enjoy no foreign transaction fees on purchases.Receive an annual credit card reward certificate, which is redeemable for cash or merchandise at U.S. Costco warehouses, including Puerto Rico.
+Product 5: COSTCO ANYWHERE VISA CARD BY CITI
+Product 5 Features: Earn 4% on eligible gas and EV charging with the Costco Anywhere Visa card for the first $7,000 per year and then 1% thereafter. Unlimited 3% on restaurants and eligible travel, including Costco Travel. Unlimited 2% on all other purchases from Costco and Costco.com. Unlimited 1% on all other purchases. Use the Costco Anywhere Visa card as your Costco membership ID.
+Product 5 Fees: No annual fee with your active/paid Costco membership. No foreign transaction fees.
 """
+
+model_names = ["Open AI GPT - 4o", "Open AI GPT - 4 Turbo", "Meta Llama 3 70B", "Google Gemini 1.5 Pro"]
+selected_model = st.selectbox("", model_names, key="model_name")
 
 
 # Initialize chat history
@@ -130,7 +147,7 @@ if prompt := st.chat_input("How can i help you?"):
     messages_memory = st.session_state.messages_memory
     # pdf_context = st.session_state.pdf_context
     pdf_context = main_context
-    response = generate_the_response(prompt, messages_memory, pdf_context)
+    response = generate_the_response(prompt, selected_model, messages_memory, pdf_context)
     # Display assistant response in chat message container
     
     
