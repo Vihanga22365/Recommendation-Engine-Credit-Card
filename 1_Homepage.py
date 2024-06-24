@@ -100,25 +100,22 @@ st.markdown(
 
 main_context = """Following is a line of credit card products and their features.
 
-Product 1: CITI AADVANTAGE PLATINUM SELECT WORLD ELITE MASTERCARD
-Product 1 Features: Credit card offers 50,000 American Airlines AAdvantage bonus miles after $2,500 in purchases within the first 3 months of account opening. Earn 2 AAdvantage miles for every $1 spent at restaurants, gas stations, and eligible American Airlines purchases. Earn 1 AAdvantage mile for every $1 spent on all other purchases. Earn 1 Loyalty Point for every 1 eligible mile earned from purchases. First checked bag free on American Airlines domestic itineraries. Preferred boarding on American Airlines flights. 25% savings when you use your card on American Airlines inflight food and beverage purchases. 
-Product 1 Fees: $0 Intro Annual Fee, $99 after the first year. No foreign transaction fees.
+Product 1: CITI AADVANTAGE CARD
+Product 1 Features: Credit card offers 50,000 American Airlines AAdvantage bonus miles after $2,500 in purchases within the first 3 months of account opening. Earn 2 AAdvantage miles for every $1 spent at restaurants, gas stations, and eligible American Airlines purchases. Earn 1 AAdvantage mile for every $1 spent on all other purchases. Earn 1 Loyalty Point for every 1 eligible mile earned from purchases. First checked bag free on American Airlines domestic itineraries. Preferred boarding on American Airlines flights. 25% savings when you use your card on American Airlines inflight food and beverage purchases. $0 Intro Annual Fee, $99 after the first year. No foreign transaction fees.
+Product 1 Sales Features: Sales person can offer one year waive off for annual fee.
 
 Product 2: CITI CUSTOM CASH CARD
-Product 2 Features: Earn 5% cash back on your top eligible spend category each billing cycle up to $500 spent. Earn 1% cash back thereafter on all other purchases. Special Travel Offer: Earn an additional 4% cash back on hotels, car rentals, and attractions booked on Citi Travel portal through 6/30/2025. 0% Intro APR for 15 months on purchases and balance transfers; after that, the variable APR will be 19.24% - 29.24%, based on your creditworthiness. Balance transfer fee of either $5 or 5% of the amount of each credit card balance transfer, whichever is greater. Balance Transfers must be completed within 4 months of account opening. 
-Product 2 Fees: No annual fee. $0 liability on unauthorized charges.
+Product 2 Features: Earn 5% cash back on your top eligible spend category each billing cycle up to $500 spent. Earn 1% cash back thereafter on all other purchases. Special Travel Offer: Earn an additional 4% cash back on hotels, car rentals, and attractions booked on Citi Travel portal through 6/30/2025. 0% Intro APR for 15 months on purchases and balance transfers; after that, the variable APR will be 19.24% - 29.24%, based on your creditworthiness. Balance transfer fee of either $5 or 5% of the amount of each credit card balance transfer, whichever is greater. Balance Transfers must be completed within 4 months of account opening. No annual fee. $0 liability on unauthorized charges.
 
 Product 3: CITI DIAMOND PREFERRED CREDIT CARD
-Product 3 Features: 0% Intro APR for 21 months on balance transfers from date of first transfer; after that, the variable APR will be 18.24% - 28.99% based on your creditworthiness. Balance transfer fee of either $5 or 5% of the amount of each transfer, whichever is greater. 0% Intro APR for 12 months on purchases from date of account opening; after that, the variable APR will be 18.24% - 28.99% based on your creditworthiness. 
-Product 3 Fees: No annual fee. $0 liability on unauthorized charges.
+Product 3 Features: 0% Intro APR for 21 months on balance transfers from date of first transfer; after that, the variable APR will be 18.24% - 28.99% based on your creditworthiness. Balance transfer fee of either $5 or 5% of the amount of each transfer, whichever is greater. 0% Intro APR for 12 months on purchases from date of account opening; after that, the variable APR will be 18.24% - 28.99% based on your creditworthiness. No annual fee. $0 liability on unauthorized charges.
 
 Product 4: CITI DOUBLE CASH CARD
-Product 4 Features: 0% Intro APR for 18 months on balance transfers; after that, the variable APR will be 19.24% - 29.24% based on your creditworthiness. Unlimited 1% cash back when you buy, plus an additional 1% as you pay, on every purchase. Earn $200 cash back after you spend $1,500 on purchases in the first 6 months of account opening. For a limited time, earn 5% total cash back on hotel, car rental and attractions when booked on the Citi TravelSM portal through 12/31/24. This is 3% cash back on top of the 1% when you buy and the 1% as you pay.
-Product 4 Fees: No annual fee. $0 liability on unauthorized charges. 
+Product 4 Features: 0% Intro APR for 18 months on balance transfers; after that, the variable APR will be 19.24% - 29.24% based on your creditworthiness. Unlimited 1% cash back when you buy, plus an additional 1% as you pay, on every purchase. Earn $200 cash back after you spend $1,500 on purchases in the first 6 months of account opening. For a limited time, earn 5% total cash back on hotel, car rental and attractions when booked on the Citi TravelSM portal through 12/31/24. This is 3% cash back on top of the 1% when you buy and the 1% as you pay. No annual fee. $0 liability on unauthorized charges. 
+Product 4 Sales Features: Sales person can offer late fee waive for first 3 months
 
 Product 5: COSTCO ANYWHERE VISA CARD BY CITI
-Product 5 Features: Earn 4% on eligible gas and EV charging with the Costco Anywhere Visa card for the first $7,000 per year and then 1% thereafter. Unlimited 3% on restaurants and eligible travel, including Costco Travel. Unlimited 2% on all other purchases from Costco and Costco.com. Unlimited 1% on all other purchases. Use the Costco Anywhere Visa card as your Costco membership ID.
-Product 5 Fees: No annual fee with your active/paid Costco membership. No foreign transaction fees.
+Product 5 Features: Earn 4% on eligible gas and EV charging with the Costco Anywhere Visa card for the first $7,000 per year and then 1% thereafter. Unlimited 3% on restaurants and eligible travel, including Costco Travel. Unlimited 2% on all other purchases from Costco and Costco.com. Unlimited 1% on all other purchases. Use the Costco Anywhere Visa card as your Costco membership ID. No annual fee with your active/paid Costco membership. No foreign transaction fees.
 """
 
 model_names = ["Open AI GPT - 4o", "Open AI GPT - 4 Turbo", "Meta Llama 3 70B", "Google Gemini 1.5 Pro"]
