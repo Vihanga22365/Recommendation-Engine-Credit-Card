@@ -8,14 +8,14 @@ from langchain.chat_models import ChatOpenAI
 import os
 
 st.set_page_config(
-    page_title="Neuro-linguistic Recommendation Engine",
+    page_title="CreditCard Recommendation Engine",
     page_icon="👨‍💻",
     layout="wide",
     initial_sidebar_state="collapsed"
     
 )
 
-st.subheader('Neuro-linguistic Recommendation Engine - Credit Card Plans Chatbot')
+st.subheader('CreditCard Recommendation Engine')
 
 llm = ChatOpenAI(model_name = "gpt-4o",temperature=0.2)
 
@@ -50,7 +50,6 @@ Human: {input}
 AI Assistant:"""
 
 def generate_the_response(prompt, memory, pdf_context):
-    llm = ChatOpenAI(model_name = "gpt-4o",temperature=0.2)    
     PROMPT =  PromptTemplate.from_template(template).partial(pdf_context=pdf_context)
     llm_chain = ConversationChain(
         prompt=PROMPT,
@@ -68,9 +67,15 @@ st.markdown(
         display: none
     }
     
-    #neuro-linguistic-recommendation-engine-credit-card-plans-chatbot {
+    #neuro-linguistic-recommendation-engine-healthcare-plans-chatbot {
         font-size: 22px;
         text-align: center;
+    } 
+    [data-testid="stChatInputTextArea"] {
+        color: black;
+        background: #ffffff;
+        font-size: 20px;
+        font-weight: 600;
     }
 </style>
 """,
