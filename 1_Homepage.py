@@ -80,7 +80,7 @@ st.markdown(
 main_context = """Following is a line of credit card products and their features.
 
 Product 1: CITI AADVANTAGE CARD
-Product 1 Features: Credit card offers 50,000 American Airlines AAdvantage bonus miles after $2,500 in purchases within the first 3 months of account opening. Earn 2 AAdvantage miles for every $1 spent at restaurants, gas stations, and eligible American Airlines purchases. Earn 1 AAdvantage mile for every $1 spent on all other purchases. Earn 1 Loyalty Point for every 1 eligible mile earned from purchases. First checked bag free on American Airlines domestic itineraries. Preferred boarding on American Airlines flights. 25% savings when you use your card on American Airlines inflight food and beverage purchases. $0 Intro Annual Fee, $99 after the first year. No foreign transaction fees.
+Product 1 Features: Credit card offers 50,000 American Airlines AAdvantage bonus miles after $2,500 in purchases within the first 3 months of account opening. Earn 2 AAdvantage miles for every $1 spent at restaurants, gas stations, and eligible American Airlines purchases. Earn 1 AAdvantage mile for every $1 spent on all other purchases. Earn 1 Loyalty Point for every 1 eligible mile earned from purchases. First checked bag free on American Airlines domestic itineraries. Preferred boarding on American Airlines flights. 25% savings when you use your card on American Airlines inflight food and beverage purchases.  $99 annual fee. No foreign transaction fees.
 Product 1 Sales Features: Sales person can offer one year waive off for annual fee.
 
 Product 2: CITI CUSTOM CASH CARD
